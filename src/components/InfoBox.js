@@ -29,15 +29,11 @@ const InfoBox = () => {
 			console.log(e);
 		});
 	}
-	//const componentWillUnmount = e => {
-	//	clearInterval(this.refresh);
-	//}
-	return (
 	<div id="data-container">
-		{this.state.currentPrice ? (
+		{data.currentPrice ? (
 			<div id="left" className="box">
 			<div className="heading">
-				{this.state.currentPrice.toLocaleString("us-EN", {
+				{data.currentPrice.toLocaleString("us-EN", {
 					style: "currency",
 					currency: "USD",
 				})}
@@ -47,18 +43,17 @@ const InfoBox = () => {
 			</div>
 			</div>
 		) : null}
-		{this.state.currentPrice ? (
+		{data.currentPrice ? (
 			<div id="middle" className="box">
-			<div className="heading">{this.state.periodChangeD}</div>
+			<div className="heading">{data.periodChangeD}</div>
 			<div className="subtext">Change Since Last X (USD)</div>
 			</div>
 		) : null}
 		<div id="right" className="box">
-			<div className="heading">{this.state.periodChangeP}</div>
+			<div className="heading">{data.periodChangeP}</div>
 			<div className="subtext">Change Since Last X (%)</div>
 		</div>
 	</div>
-	);
   
 }
 

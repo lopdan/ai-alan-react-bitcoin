@@ -21,6 +21,7 @@ const App = () => {
     return(
         <div>
             <h1>Initial structure</h1>
+            <InfoBox/>
         </div>
     );
 
