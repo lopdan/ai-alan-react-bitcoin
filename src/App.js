@@ -53,7 +53,7 @@ const App = () => {
 	  console.log(dataValues);
       getData();
   },[dataValues.activePoint])
-
+  console.log(dataValues);
     return (
 
       <div className='container'>
