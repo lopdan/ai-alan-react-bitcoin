@@ -3,7 +3,15 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import './App.css';
 
+import {
+  useTooltip,
+  TooltipWithBounds,
+  defaultStyles as defaultToopTipStyles,
+} from "@visx/tooltip";
+
 import InfoBox from './components/InfoBox';
+import LineChart from './components/LineChart';
+import Placeholder from './components/Placeholder';
 
 const alan_SDK_key = 'c1344b0e5cda4dfcd27bc949d44adcca2e956eca572e1d8b807a3e2338fdd0dc/stage';
 
@@ -52,13 +60,13 @@ const App = () => {
       }
 	  console.log(dataValues);
       getData();
-  },[dataValues.activePoint])
+  },[])
   console.log(dataValues);
     return (
 
       <div className='container'>
         <div className='row'>
-          <h1>30 Day Bitcoin Price Chart</h1>
+          <h1>Bitcoin Price Chart</h1>
         </div>
         <div className='row'>
           { !dataValues.fetchingData ?
@@ -67,14 +75,18 @@ const App = () => {
         </div>
         <div className='row'>
           <div className='popup'>
+            {dataValues.hoverLoc ? <Placeholder hoverLoc={dataValues.hoverLoc} activePoint={dataValues.activePoint}/> : null}
           </div>
         </div>
         <div className='row'>
           <div className='chart'>
+            { !dataValues.fetchingData ?
+              <LineChart data={dataValues.data} onChartHover={ (a,b) => updateData({hoverLoc: a, activePoint: b}) }/>
+              : null }
           </div>
         </div>
         <div className='row'>
-          <div id="coindesk"> Powered by <a href="http://www.coindesk.com/price/">CoinDesk</a></div>
+          <div id="coindesk"> Powered by Coindesk</div>
         </div>
       </div>
 

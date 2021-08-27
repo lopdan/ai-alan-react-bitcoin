@@ -1,0 +1,27 @@
+.hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: rgb(0, 0, 0);
+
+
+  text-shadow: 1px 1px 1px gray;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hover .tooltip{
+  cursor: default;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: stroke 150ms;
+}
+
+.hover .price {
+  font-weight: 700;
+}
