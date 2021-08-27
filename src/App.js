@@ -3,11 +3,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import './App.css';
 
-import {
-  useTooltip,
-  TooltipWithBounds,
-  defaultStyles as defaultToopTipStyles,
-} from "@visx/tooltip";
+import {unstable_batchedUpdates} from 'react-dom'
 
 import InfoBox from './components/InfoBox';
 import LineChart from './components/LineChart';
@@ -32,6 +28,15 @@ const App = () => {
 			}
 		})
 	}, [])
+
+  const setValues = (a,b) => {
+    unstable_batchedUpdates(() => {
+      updateData({
+        hoverLoc: a,
+        activePoint: b
+      })
+    })
+}
 
   useEffect(() => {
     const getData = () => {
@@ -81,7 +86,7 @@ const App = () => {
         <div className='row'>
           <div className='chart'>
             { !dataValues.fetchingData ?
-              <LineChart data={dataValues.data} onChartHover={ (a,b) => updateData({hoverLoc: a, activePoint: b}) }/>
+              <LineChart data={dataValues.data} onChartHover={ (a,b) => setValues(a,b) }/>
               : null }
           </div>
         </div>

@@ -9,7 +9,7 @@ const LineChart = props => {
     activePoint: null
   })
   const profileStateChangeHandler = e => {
-		setProfileState({...profileState, [e.target.name]: e.target.value})
+		setPointData({...pointData, [e.target.name]: e.target.value})
 	}
   const getX = () => {
     const data = profileState.data;
@@ -66,7 +66,7 @@ const LineChart = props => {
   }
   // BUILD GRID AXIS
   const makeAxis = () => {
-    const yLabelSize = profileState;
+    const yLabelSize = profileState.yLabelSize;
     const x = getX();
     const y = getY();
 
