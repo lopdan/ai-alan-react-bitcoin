@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Voice Controlled React Bitcoin Price Application - Alan AI Voice Assistant
+
+![](alan_studio_data/priceChart.png)
+
+## Introduction
+
+In this project, we show Bitcoin's price chart with the voice assistant Alan AI (https://alan.app/) and React. When launching the app click the microphone button in the bottom right and proceed to ask the bitcoin price with a time period:
+- Do you know the past week Bitcoin price?
+- What was the Bitcoin price over the past month?
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
