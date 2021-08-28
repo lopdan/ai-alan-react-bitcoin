@@ -12,7 +12,7 @@ const Placeholder = props => {
 	placementStyles.left = profileState.hoverLoc + svgLocation.left - (width/2);
 
 	return (
-		<div className='hover tooltip' filter="url(#drop-shadow-0)" style={ placementStyles }>
+		<div className='hover' filter="url(#drop-shadow-0)" style={ placementStyles }>
 			<div className='date'>{profileState.activePoint.d}</div>
 			<div className='price'>{profileState.activePoint.p}</div>
 		</div>

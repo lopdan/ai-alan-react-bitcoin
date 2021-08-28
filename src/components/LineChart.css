@@ -12,20 +12,21 @@
 
 .linechart_point {
   fill: #fff;
-  stroke-width: 2;
+  stroke-width: 4;
 }
 
 .linechart_area {
-  padding: 8px;
+  padding: 5px;
   fill: #84dc66;
   stroke: none;
-  opacity: .4;
+  opacity: .35;
 }
 /*For red days #ff4c4c*/
 
 .linechart_label {
+ padding: 5px;
  fill: #292b29;
- font-weight: 700;
+ font-weight: 600;
 }
 
 .hoverLine {

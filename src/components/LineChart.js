@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./LineChart.css";
 
 const LineChart = props => {
@@ -8,9 +8,10 @@ const LineChart = props => {
     hoverLoc: null,
     activePoint: null
   })
-  const profileStateChangeHandler = e => {
-		setPointData({...pointData, [e.target.name]: e.target.value})
-	}
+  useEffect(() =>{
+    setProfileState(profileState);
+  },[props]) 
+
   const getX = () => {
     const data = profileState.data;
     return {
@@ -85,17 +86,17 @@ const LineChart = props => {
   }
   const makeLabels = () => {
     const {svgHeight, svgWidth, xLabelSize, yLabelSize} = profileState;
-    const padding = 5;
+    const padding = 10;
     return(
       <g className="linechart_label">
-        {/* Y AXIS LABELS */}
+        {/** Y AXIS LABELS */}
         <text transform={`translate(${yLabelSize/2}, 20)`} textAnchor="middle">
           {getY().max.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
         </text>
         <text transform={`translate(${yLabelSize/2}, ${svgHeight - xLabelSize - padding})`} textAnchor="middle">
           {getY().min.toLocaleString('us-EN',{ style: 'currency', currency: 'USD' })}
         </text>
-        {/* X AXIS LABELS */}
+        {/** X AXIS LABELS */}
         <text transform={`translate(${yLabelSize}, ${svgHeight})`} textAnchor="start">
           {profileState.data[0].d }
         </text>
@@ -105,7 +106,7 @@ const LineChart = props => {
       </g>
     )
   }
-  // FIND CLOSEST POINT TO MOUSE
+  // Closes point to mouse
   const getCoords = e => {
     const {svgWidth, data, yLabelSize} = profileState;
     const svgLocation = document.getElementsByClassName("linechart")[0].getBoundingClientRect();
@@ -140,12 +141,11 @@ const LineChart = props => {
       profileState.onChartHover(relativeLoc, closestPoint);
     }
   }
-  // STOP HOVER
   const stopHover = () => {
     setPointData({hoverLoc: null, activePoint: null});
     profileState.onChartHover(null, null);
   }
-  // MAKE ACTIVE POINT
+  // Point in chart
   const makeActivePoint = () => {
     const {color, pointRadius} = profileState;
     return (
@@ -158,7 +158,7 @@ const LineChart = props => {
       />
     );
   }
-  // MAKE HOVER LINE
+  // Hover line
   const createLine = () =>{
     const {svgHeight, xLabelSize} = profileState;
     return (
